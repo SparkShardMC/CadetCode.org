@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1: The Megaphone | CadetCode.org</title>
+    
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="nasa-theme">
+
+    <header class="mission-header">
+        <div class="logo">🚀 CADETCODE.ORG</div>
+        <div class="breadcrumb">Main / Level_01 / Print_Lesson</div>
+        <div class="save-zone">
+            <button id="saveBtn" onclick="saveMyProgress()">💾 SAVE PROGRESS</button>
+            <span id="saveStatus">Status: Synced</span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <nav class="sidebar">
+            <h3>MISSION MAP</h3>
+            <ul>
+                <li class="level-item active">
+                    <a href="printlesson.html">[*] Lvl 1: The Megaphone</a>
+                </li>
+                <li class="level-item">
+                    <a href="stringlesson.html">[ ] Lvl 1.2: Speech Bubbles</a>
+                </li>
+                <li class="level-item">
+                    <a href="commentlesson.html">[ ] Lvl 1.3: Secret Notes</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="lesson-area">
+            
+            <section class="explanation-box">
+                <h2>1. THE 5-YEAR-OLD LOGIC</h2>
+                <p>Your robot is silent! <b>print()</b> is a megaphone. It tells the robot to shout words out loud so you can hear them. Without it, the robot just stays quiet.</p>
+
+                <h2>2. THE NASA ENGINEER LOGIC</h2>
+                <p>NASA uses <code>print()</code> to see <b>Telemetry</b>. If a rocket is in space, engineers "print" the battery and heat data to their screens. If they don't, they are flying blind!</p>
+
+                <div class="keyboard-compass">
+                    <h3>🗺️ KEYBOARD COMPASS: The Megaphone ( )</h3>
+                    <div class="compass-grid">
+                        <div class="device-info">
+                            <strong>💻 LAPTOP:</strong> Hold [SHIFT] and tap then.
+                        </div>
+                        <div class="device-info">
+                            <strong>📱 IPAD:</strong> Tap [.123] -> Look above the Spacebar.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cockpit">
+                <div class="code-header">
+                    <span>FILE: telemetry_check.py</span>
+                    <button class="copy-btn" onclick="copyMissionCode()">📋 COPY CODE</button>
+                </div>
+
+                <textarea id="editor" spellcheck="false" oninput="liveCheck()">print("T-Minus 10 Seconds to Launch!")</textarea>
+
+                <button class="run-btn" onclick="runMission()">🚀 RUN MISSION</button>
+
+                <div class="terminal">
+                    <div id="terminal-header">NASA CONSOLE OUTPUT:</div>
+                    <div id="output">> _</div>
+                </div>
+            </section>
+
+            <footer class="lesson-footer">
+                <div class="link-group">
+                    <h4>🚀 GEAR UP (Required)</h4>
+                    <a href="stringlesson.html">Strings " " ➔</a>
+                    <a href="../help/errors.html">Common Mistakes ➔</a>
+                </div>
+                <div class="link-group">
+                    <h4>🛰️ BEYOND (Usage)</h4>
+                    <a href="../NASA/satellites.html">Satellite Feeds ➔</a>
+                    <a href="../Robotics/vex.html">VEX Screen Logic ➔</a>
+                </div>
+            </footer>
+        </main>
+
+        <aside class="stickman-corner">
+            <div id="commander-stick-visual">
+                <pre id="stickman-face">
+  (o_o)
+  <| |>
+   / \
+                </pre>
+            </div>
+            <div class="speech-bubble" id="stickman-msg">
+                "Ready to launch? Make sure your 'Megaphone' handles are closed!"
+            </div>
+        </aside>
+    </div>
+
+    <script src="../ASCII/poses.js"></script>
+    <script src="../assets/saveSystem.js"></script>
+    <script src="../assets/uiLogic.js"></script>
+
+    <script>
+        function copyMissionCode() {
+            const editor = document.getElementById('editor');
+            editor.select();
+            document.execCommand('copy');
+            updateStickman("Mission code copied! Paste it in the cockpit.", "happy");
+        }
+
+        function runMission() {
+            const code = document.getElementById('editor').value;
+            const output = document.getElementById('output');
+            
+            // Checking for the right syntax
+            if (code.includes('print(') && code.includes(')') && code.includes('"')) {
+                // Extracts text between quotes
+                const result = code.match(/"([^"]+)"/);
+                output.innerText = "> " + (result ? result : "SUCCESS!");
+                updateStickman("BOOM! Telemetry received. Mission Success!", "happy");
+            } else {
+                output.innerText = "> ERROR: Malformed Megaphone Command!";
+                updateStickman("Whoops! Check your 'Parentheses' or 'Quotes'!", "warning");
+            }
+        }
+
+        function liveCheck() {
+            const code = document.getElementById('editor').value;
+            // If they are missing the closing bracket, Stickman warns them live
+            if (code.includes('(') && !code.includes(')')) {
+                updateStickman("Don't forget to close the handle ')'!", "warning");
+            }
+        }
+    </script>
+</body>
+</html>
