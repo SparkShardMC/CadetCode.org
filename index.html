@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CadetCode.org | Mission Control</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="nasa-theme">
+
+    <header class="mission-header">
+        <div class="logo">🚀 CADETCODE.ORG</div>
+        <div class="breadcrumb">Main / Mission_Control</div>
+        <div class="save-zone">
+            <button id="saveBtn" onclick="saveMyProgress()">💾 SAVE PROGRESS</button>
+            <span id="saveStatus">Status: Synced</span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <nav class="sidebar">
+            <h3>MISSION MAP</h3>
+            <ul id="missionList">
+                <li class="level-item" onmouseover="showPreview('print')">
+                    <a href="levels/level_01_print/index.html">Level 1: The Megaphone</a>
+                    <div class="hover-box" id="preview-print">
+                        <p>Learn to speak! Includes: print(), Strings "", and NASA Telemetry.</p>
+                    </div>
+                </li>
+                <li class="level-item locked" onmouseover="showPreview('math')">
+                    <a href="levels/level_02_math/index.html">Level 2: The Star Power</a>
+                    <div class="hover-box" id="preview-math">
+                        <p>🔒 LOCKED: Complete Level 1 to unlock Math, Physics, and Robotics.</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="dashboard">
+            <section class="welcome-hero">
+                <h1>WELCOME, CADET</h1>
+                <p>Your journey from 5-year-old to NASA Engineer starts now.</p>
+                <button class="launch-btn" onclick="resumeMission()">🚀 CONTINUE MISSION</button>
+            </section>
+
+            <div class="info-grid">
+                <div class="hub-card">
+                    <h3>ROBOTICS HUB</h3>
+                    <p>Connect your Python code to LEGO Spike and VEX sensors.</p>
+                </div>
+                <div class="hub-card">
+                    <h3>NASA GALLERY</h3>
+                    <p>See real Python code used on the International Space Station.</p>
+                </div>
+            </div>
+        </main>
+
+        <aside class="stickman-corner">
+            <div id="commander-stick">
+                <pre>
+  (o_o)
+  <| |>
+   / \
+                </pre>
+            </div>
+            <div class="speech-bubble">
+                "Ready for launch, Cadet? Click Level 1 to begin!"
+            </div>
+        </aside>
+    </div>
+
+    <script src="assets/saveSystem.js"></script>
+    <script src="assets/uiLogic.js"></script>
+</body>
+</html>
