@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2.1: The Star Power | CadetCode.org</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="nasa-theme">
+
+    <header class="mission-header">
+        <div class="logo">🚀 CADETCODE.ORG</div>
+        <div class="breadcrumb">Main / Level_02 / Math_Lesson</div>
+        <div class="save-zone">
+            <button id="saveBtn" onclick="saveMyProgress()">💾 SAVE PROGRESS</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <nav class="sidebar">
+            <h3>MISSION MAP</h3>
+            <ul>
+                <li class="level-item"><a href="../Level_01_Print/commentlesson.html">[ok] Lvl 1: Complete</a></li>
+                <li class="level-item active"><a href="mathlesson.html">[*] Lvl 2.1: Star Power (*)</a></li>
+                <li class="level-item locked"><a href="#">[ ] Lvl 2.2: The Remainder</a></li>
+            </ul>
+        </nav>
+
+        <main class="lesson-area">
+            <section class="explanation-box">
+                <h2>1. THE 5-YEAR-OLD LOGIC</h2>
+                <p>Imagine you have a magic <b>Star Wand</b>. If you have 5 cookies and you tap them with the Star Wand <code>*</code> and the number 3, you suddenly have 15 cookies! In computer language, we don't use 'x' for math because 'x' is just a letter. We use the <b>Star</b> <code>*</code> to multiply!</p>
+                
+                <h2>2. THE NASA ENGINEER LOGIC</h2>
+                <p>To leave Earth, a rocket needs <b>Thrust</b>. If 1 engine gives 500,000 pounds of push, and we have 4 engines, we tell the computer <code>500000 * 4</code>. If you use a '+' by mistake, the rocket won't even wiggle!</p>
+
+                <div class="keyboard-compass">
+                    <h3>🗺️ KEYBOARD COMPASS: The Star *</h3>
+                    <p><b>💻 LAPTOP:</b> Hold [SHIFT] and tap. <b>📱 IPAD:</b> Tap [.123], then tap [#+=]. It's on the left!</p>
+                </div>
+            </section>
+
+            <section class="cockpit">
+                <div class="code-header"><span>FILE: thrust_calc.py</span></div>
+                <textarea id="editor" spellcheck="false" oninput="liveCheck()">print(500000 * 4)</textarea>
+                <button class="run-btn" onclick="runMission()">🚀 RUN MISSION</button>
+                <div class="terminal">
+                    <div id="output">> _</div>
+                    <div id="next-zone" style="display:none; margin-top:20px;">
+                        <button class="launch-btn" onclick="window.location.href='divisionlesson.html'">🚀 NEXT MISSION: EQUAL SPLITS ➔</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="stickman-corner">
+            <pre id="stickman-face">  (o_o)  <br>  <| |>  <br>   / \   </pre>
+            <div class="speech-bubble" id="stickman-msg">"The Star (*) is the magic key for multiplication!"</div>
+        </aside>
+    </div>
+
+    <script src="../ASCII/poses.js"></script>
+    <script src="../assets/saveSystem.js"></script>
+    <script src="../assets/uiLogic.js"></script>
+    <script>
+        function runMission() {
+            const code = document.getElementById('editor').value;
+            const output = document.getElementById('output');
+            
+            // Checking for the Star and NO 'x'
+            if (code.includes('*') && !code.toLowerCase().includes('x')) {
+                output.innerText = "> 2000000 LBS OF THRUST";
+                updateStickman("LIFT OFF! The math is perfect.", "happy");
+                document.getElementById('next-zone').style.display = "block";
+            } else if (code.toLowerCase().includes('x')) {
+                output.innerText = "> ERROR: Invalid Symbol 'x'";
+                updateStickman("Don't use 'x'! Use the Star (*) key!", "warning");
+            } else {
+                output.innerText = "> ERROR: No calculation found.";
+                updateStickman("Try multiplying the numbers!", "warning");
+            }
+        }
+
+        function liveCheck() {
+            const code = document.getElementById('editor').value;
+            if(code.includes('x')) {
+                updateStickman("Get that 'x' out of here! Use '*'!", "warning");
+            }
+        }
+    </script>
+</body>
+</html>
