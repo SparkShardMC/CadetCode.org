@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2.2: The Equal Split | CadetCode.org</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="nasa-theme">
+
+    <header class="mission-header">
+        <div class="logo">🚀 CADETCODE.ORG</div>
+        <div class="breadcrumb">Main / Level_02 / Division_Lesson</div>
+        <div class="save-zone">
+            <button id="saveBtn" onclick="saveMyProgress()">💾 SAVE PROGRESS</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <nav class="sidebar">
+            <h3>MISSION MAP</h3>
+            <ul>
+                <li class="level-item"><a href="../Level_01_Print/commentlesson.html">[ok] Lvl 1: Complete</a></li>
+                <li class="level-item"><a href="mathlesson.html">[ok] Lvl 2.1: Star Power (*)</a></li>
+                <li class="level-item active"><a href="divisionlesson.html">[*] Lvl 2.2: The Equal Split (/)</a></li>
+            </ul>
+        </nav>
+
+        <main class="lesson-area">
+            <section class="explanation-box">
+                <h2>1. THE 5-YEAR-OLD LOGIC</h2>
+                <p>Imagine you have 10 space cookies and 2 friends. To be fair, everyone needs the same amount! The <b>Forward Slash</b> <code>/</code> is like a laser beam that cuts your pile of cookies into equal groups. <code>10 / 2</code> tells the computer to give everyone 5 cookies!</p>
+                
+                <h2>2. THE NASA ENGINEER LOGIC</h2>
+                <p>On the International Space Station, we have a giant tank of Oxygen. If we have 100 units of air and 5 astronauts, we need to know exactly how much air each person can use. We tell the life-support computer: <code>100 / 5</code>. If we get this math wrong, someone might run out of air!</p>
+
+                <div class="keyboard-compass">
+                    <h3>🗺️ KEYBOARD COMPASS: The Slash /</h3>
+                    <p><b>💻 LAPTOP:</b> Tap the key with the [?] on it (next to Shift). No need to hold Shift! <b>📱 IPAD:</b> Tap [.123]. It is right there next to the Spacebar.</p>
+                </div>
+            </section>
+
+            <section class="cockpit">
+                <div class="code-header"><span>FILE: oxygen_share.py</span></div>
+                <textarea id="editor" spellcheck="false" oninput="liveCheck()">print(100 / 5)</textarea>
+                <button class="run-btn" onclick="runMission()">🚀 RUN MISSION</button>
+                <div class="terminal">
+                    <div id="output">> _</div>
+                    <div id="next-zone" style="display:none; margin-top:20px;">
+                        <button class="launch-btn" onclick="window.location.href='subtractionlesson.html'">🚀 NEXT MISSION: THE WEIGHT LOSS (-) ➔</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="stickman-corner">
+            <pre id="stickman-face">
+  (o_o)
+  <| |>
+   / \
+            </pre>
+            <div class="speech-bubble" id="stickman-msg">"The Slash (/) splits things up fairly!"</div>
+        </aside>
+    </div>
+
+    <script src="../ASCII/poses.js"></script>
+    <script src="../assets/saveSystem.js"></script>
+    <script src="../assets/uiLogic.js"></script>
+    <script>
+        function runMission() {
+            const code = document.getElementById('editor').value;
+            const output = document.getElementById('output');
+            
+            // Checking for the Slash and basic math
+            if (code.includes('/')) {
+                output.innerText = "> 20.0 UNITS PER ASTRONAUT";
+                updateStickman("Oxygen shared! Everyone is breathing easy.", "happy");
+                document.getElementById('next-zone').style.display = "block";
+            } else {
+                output.innerText = "> ERROR: Oxygen Tank Clogged!";
+                updateStickman("Use the Slash (/) to divide the air!", "warning");
+            }
+        }
+
+        function liveCheck() {
+            const code = document.getElementById('editor').value;
+            if(code.includes('\\')) {
+                updateStickman("Wait! That's a Backslash. Use the Forward Slash (/)!", "warning");
+            }
+        }
+    </script>
+</body>
+</html>
