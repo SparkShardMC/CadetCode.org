@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1.2: Speech Bubbles | CadetCode.org</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="nasa-theme">
+
+    <header class="mission-header">
+        <div class="logo">🚀 CADETCODE.ORG</div>
+        <div class="breadcrumb">Main / Level_01 / String_Lesson</div>
+        <div class="save-zone">
+            <button id="saveBtn" onclick="saveMyProgress()">💾 SAVE PROGRESS</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <nav class="sidebar">
+            <h3>MISSION MAP</h3>
+            <ul>
+                <li class="level-item"><a href="printlesson.html">[ok] Lvl 1.1: Print</a></li>
+                <li class="level-item active"><a href="stringlesson.html">[*] Lvl 1.2: Strings</a></li>
+                <li class="level-item"><a href="commentlesson.html">[ ] Lvl 1.3: Comments</a></li>
+            </ul>
+        </nav>
+
+        <main class="lesson-area">
+            <section class="explanation-box">
+                <h2>1. THE 5-YEAR-OLD LOGIC</h2>
+                <p>The <b>" "</b> are Speech Bubbles. Without them, the computer tries to "eat" the words instead of saying them!</p>
+                <h2>2. THE NASA ENGINEER LOGIC</h2>
+                <p>We call text a <b>String</b>. Engineers use Strings to label planets. <code>"Mars"</code> is a string; without quotes, the computer crashes!</p>
+                <div class="keyboard-compass">
+                    <h3>🗺️ KEYBOARD COMPASS: " "</h3>
+                    <p><b>💻 LAPTOP:</b> [SHIFT] + [Key next to Enter]. <b>📱 IPAD:</b> Hold [ ' ] for [ " ].</p>
+                </div>
+            </section>
+
+            <section class="cockpit">
+                <div class="code-header"><span>FILE: planet_label.py</span></div>
+                <textarea id="editor" spellcheck="false" oninput="liveCheck()">print("Mars")</textarea>
+                <button class="run-btn" onclick="runMission()">🚀 RUN MISSION</button>
+                <div class="terminal">
+                    <div id="output">> _</div>
+                    <div id="next-zone" style="display:none; margin-top:20px;">
+                        <button class="launch-btn" onclick="window.location.href='commentlesson.html'">🚀 NEXT MISSION: SECRET NOTES ➔</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="stickman-corner">
+            <pre id="stickman-face">  (o_o)  <br>  <| |>  <br>   / \   </pre>
+            <div class="speech-bubble" id="stickman-msg">"Don't forget both quotes!"</div>
+        </aside>
+    </div>
+
+    <script src="../ASCII/poses.js"></script>
+    <script src="../assets/saveSystem.js"></script>
+    <script src="../assets/uiLogic.js"></script>
+    <script>
+        function runMission() {
+            const code = document.getElementById('editor').value;
+            const output = document.getElementById('output');
+            if (code.includes('"')) {
+                output.innerText = "> Mars";
+                updateStickman("Perfect! Planet identified.", "happy");
+                document.getElementById('next-zone').style.display = "block";
+            } else {
+                output.innerText = "> ERROR: Unknown Label!";
+                updateStickman("Add speech bubbles \" \"!", "warning");
+            }
+        }
+        function liveCheck() { if(document.getElementById('editor').value.includes('"')) updateStickman("Starting a bubble!", "typing"); }
+    </script>
+</body>
+</html>
